@@ -1,0 +1,12 @@
+import { PBXNativeTarget, XcodeProject } from "@bacons/xcode";
+export type ExtensionType = "widget" | "notification-content" | "notification-service" | "share" | "intent" | "bg-download" | "intent-ui" | "spotlight" | "matter" | "quicklook-thumbnail" | "imessage" | "clip" | "watch" | "watch-widget" | "location-push" | "credentials-provider" | "account-auth" | "action" | "safari" | "app-intent" | "device-activity-monitor" | "network-packet-tunnel" | "network-app-proxy" | "network-filter-data" | "network-dns-proxy" | "keyboard";
+export declare const KNOWN_EXTENSION_POINT_IDENTIFIERS: Record<string, ExtensionType>;
+export declare const SHOULD_USE_APP_GROUPS_BY_DEFAULT: Record<ExtensionType, boolean>;
+export declare function getTargetInfoPlistForType(type: ExtensionType): string;
+export declare function productTypeForType(type: ExtensionType): "com.apple.product-type.application.on-demand-install-capable" | "com.apple.product-type.application" | "com.apple.product-type.extensionkit-extension" | "com.apple.product-type.app-extension";
+export declare function needsEmbeddedSwift(type: ExtensionType): boolean;
+export declare function getFrameworksForType(type: ExtensionType): string[];
+export declare function isNativeTargetOfType(target: PBXNativeTarget, type: ExtensionType): boolean;
+export declare function getMainAppTarget(project: XcodeProject): PBXNativeTarget;
+export declare function getAuxiliaryTargets(project: XcodeProject): PBXNativeTarget[];
+export declare function getWatchAppTarget(project: XcodeProject): PBXNativeTarget | undefined;
